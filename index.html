@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #f9c5d1, #fbc2eb);
+            /* overflow eliminado para que no oculte los botones */
+            margin: 0;
+        }
+
+        .main-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+            flex-wrap: wrap;
+            padding: 40px 20px;
+        }
+
+        .snoopy-img {
+            width: 520px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .letter {
+            background: #fff;
+            padding: 30px;
+            width: 340px;
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            border: 3px solid #f472b6;
+            text-align: left;
+        }
+
+        .letter h2 {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ec4899;
+            margin-bottom: 15px;
+        }
+
+        .firework {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            from {
+                transform: scale(1);
+                opacity: 1;
+            }
+            to {
+                transform: scale(14);
+                opacity: 0;
+            }
+        }
+
+        .no-btn {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col items-center justify-center min-h-screen">
+
+    <div class="main-container">
+
+        <!-- Imagen de Snoopy y Woodstock -->
+        <img
+            src="snoopy-y-pajarito-woodstock-emilio-12616.webp"
+            alt="Snoopy y Woodstock"
+            class="snoopy-img"
+        >
+
+        <!-- Mini carta a la derecha -->
+        <div class="letter">
+            <h2>para mi mini petit</h2>
+
+            <p>
+                juju mi bebe buapaaaaa, antes que todo, espero te guste.
+                amooooor soy muy felii estando contigo la vedaa, me gusta nuestra relación la veda,
+                ya casi un año que te conte del sueño mi bebe snoopy, haberte contado sin duda
+                alguna dio nuestro paso para esta hermosa hisotira que poco a poco vamos escribiendo,
+                es una relacion tan sana que los dos damos mas de lo que podemos para estar bien,
+                te agradezco mi amor, por el enorme esfuerzo que haces dia con dia, graciñis mi
+                cuchurrumiiii, eres la mejooooo.
+                mi amore potataaaa, me gustaria que fueras mi san valentin, pero puedo ser yo tu
+                san valentin, shi aceptas presiono shi jijiji, graciñisssssss mi amore buapaa.
+                TIAMOOOOOOOOOOOOOOOOOOOOO
+                MUSHOOOOOOOOOOOOOOOOOO
+                MIBEBEEEEEEEEEEEEEEBUAPAAAAAAA
+            </p>
+
+            <p class="mt-4 font-semibold text-pink-600">
+                puedo ser tu san valentin mi cariñito dulce??
+            </p>
+        </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="mt-12 flex justify-center gap-8 flex-wrap">
+        <button
+            onclick="celebrate()"
+            class="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 rounded-full text-xl shadow-xl transition duration-300"
+        >
+            shi jiji
+        </button>
+
+        <button
+            id="noButton"
+            class="no-btn bg-gray-400 text-white px-8 py-4 rounded-full text-xl shadow-xl"
+        >
+            etemmmm
+        </button>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('noButton');
+
+        // El botón NO se mueve cuando intentan presionarlo
+        noButton.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - 150);
+            const y = Math.random() * (window.innerHeight - 80);
+
+            noButton.style.position = 'absolute';
+            noButton.style.left = x + 'px';
+            noButton.style.top = y + 'px';
+        });
+
+        function celebrate() {
+            for (let i = 0; i < 180; i++) {
+                const firework = document.createElement('div');
+                firework.classList.add('firework');
+                firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                firework.style.left = Math.random() * window.innerWidth + 'px';
+                firework.style.top = Math.random() * window.innerHeight + 'px';
+
+                document.body.appendChild(firework);
+
+                setTimeout(() => {
+                    firework.remove();
+                }, 1000);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
